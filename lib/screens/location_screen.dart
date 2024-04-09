@@ -29,22 +29,6 @@ class LocationScreen extends StatelessWidget {
           title: Text('VPN Locations (${_controller.vpnList.length})'),
         ),
 
-        bottomNavigationBar:
-            // Config.hideAds ? null:
-            _adController.ad != null && _adController.adLoaded.isTrue
-                ? SafeArea(
-                    child: SizedBox(
-                        height: 85, child: AdWidget(ad: _adController.ad!)))
-                : null,
-
-        //refresh button
-        floatingActionButton: Padding(
-          padding: const EdgeInsets.only(bottom: 10, right: 10),
-          child: FloatingActionButton(
-              onPressed: () => _controller.getVpnData(),
-              child: Icon(CupertinoIcons.refresh)),
-        ),
-
         body: _controller.isLoading.value
             ? _loadingWidget()
             : _controller.vpnList.isEmpty
